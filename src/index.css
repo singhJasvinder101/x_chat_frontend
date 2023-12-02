@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=Belanosima&family=Lato:ital@1&family=Martel+Sans:wght@600&family=Montserrat:wght@700;800&family=Noto+Sans:wght@500&family=Nova+Mono&family=Nunito:wght@600&family=Open+Sans:wght@500&family=Poppins:wght@400;700&family=Roboto+Condensed&family=Roboto+Slab:wght@500&family=Roboto:wght@500&family=Teko:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=Belanosima&family=Dhurjati&family=Lato:ital@1&family=Martel+Sans:wght@600&family=Montserrat:wght@700;800&family=Noto+Sans:wght@500&family=Nova+Mono&family=Nunito:wght@600&family=Open+Sans:wght@500&family=Poppins:wght@400;700&family=Roboto+Condensed&family=Roboto+Slab:wght@500&family=Roboto:wght@500&family=Teko:wght@500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+
+.App {
+    background: url("chat home page_ml_resize_x2.jpg");
+    height: 100vh;
+    width: 100% !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* position: absolute; */
+    top: 0;
+    font-family: 'Belanosima';
+}
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.15);
+    -webkit-backdrop-filter: blur(9px);
+    backdrop-filter: blur(9px);
+    border: 1px solid rgba(255, 255, 255, 0.075);
+}
+
+.chakra-slide {
+    width: 67% !important;
+}
+
+.chat-page {
+    height: 91.5vh;
+}
+
+.martelSans {
+    font-family: 'Open Sans';
+}
+
+.hidden {
+    display: none !important;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(136, 136, 136, 0.281);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.brand {
+    background: linear-gradient(90deg, rgba(41, 137, 175, 0.673), rgba(41, 126, 175, 0.753), rgb(41, 137, 175));
+    color: transparent;
+    background-clip: text;
+    font-family: "Dhurjati" !important;
+    font-weight: bold;
+    font-size: 2.4rem !important;
+}
+
+@media screen and (max-width: 900px) {
+    .glass-effect {
+        background: rgba(255, 255, 255, 1.15);
+        background: transparent !important;
+        backdrop-filter: blur(8px);
+    }
+
+    .chakra-tabs {
+        width: 100% !important;
+    }
+
+    .chakra-slide {
+        width: 100% !important;
+    }
+}
+
+input {
+    border: 2px transparent !important;
+}
+
+.error {
+    color: red;
+}
