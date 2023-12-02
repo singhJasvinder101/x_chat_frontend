@@ -134,7 +134,7 @@ const SideDrawer = () => {
                     </Button>
                 </Tooltip>
                 <Text className='brand' fontSize="2xl">
-                    X CHAT
+                    <img className='logo d-inline-block mb-1 xs:h-[2rem] xs:w-[2rem]  md:h-[4rem] md:w-[4rem]' src="/x_chat_logo (2).png" alt="logo" />CHAT
                 </Text>
                 <div>
                     <Menu>

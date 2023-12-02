@@ -78,13 +78,14 @@ code {
 }
 
 .brand {
-    background: linear-gradient(90deg, rgba(41, 137, 175, 0.673), rgba(41, 126, 175, 0.753), rgb(41, 137, 175));
+    background: linear-gradient(90deg, rgba(41, 137, 175, 0.863), rgba(41, 126, 175, 0.932), rgb(41, 137, 175));
     color: transparent;
     background-clip: text;
     font-family: "Dhurjati" !important;
     font-weight: bold;
     font-size: 2.4rem !important;
 }
+
 
 @media screen and (max-width: 900px) {
     .glass-effect {
