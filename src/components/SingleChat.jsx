@@ -8,7 +8,7 @@ import UpdateGroupChatModel from './UpdateGroupChatModel'
 import axios from 'axios'
 import ScrollableChat from './ScrollableChat'
 import io from 'socket.io-client'
-import Typing from '../animations/typing'
+import Typing from '../animations/Typing'
 // import Lottie from "lottie-react";
 var socket, selectedChatCompare
 
