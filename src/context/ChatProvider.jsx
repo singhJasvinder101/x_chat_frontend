@@ -37,6 +37,7 @@ const ChatProvider = ({ children }) => {
                 navigate('/');
             } else {
                 setUser(userInfo);
+                navigate('/chats')
             }
         };
 
