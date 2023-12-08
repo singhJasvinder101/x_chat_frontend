@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { chatState } from '../context/ChatProvider'
 import { Box, FormControl, IconButton, Input, Spinner, Text, space, useToast } from '@chakra-ui/react'
 import { ArrowBackIcon } from '@chakra-ui/icons'
@@ -20,6 +20,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     const [newMessage, setNewMessage] = useState("")
     const apiUrl = import.meta.env.VITE_API_URI
     const toast = useToast()
+    const bottomRef = useRef(null)
 
     const [socketConnected, setSocketConnected] = useState(false)
     const [typing, setTyping] = useState(false)
@@ -112,6 +113,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         selectedChatCompare = selectedChat;
     }, [selectedChat])
 
+    useEffect(() => {
+        bottomRef.current.scrollTop = bottomRef.current.scrollHeight
+    }, [messages]);
 
     useEffect(() => {
         // checking whether the icnoming messge belong to respective/selected chat or not
@@ -124,9 +128,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 // console.log(selectedChatCompare)
                 // console.log(newMessageRecieved)
                 // console.log(notification)
-                
+
                 // give ntifications
-                if (!notification.includes(newMessageRecieved._id)  ) {
+                if (!notification.includes(newMessageRecieved._id)) {
                     setNotification([newMessageRecieved, ...notification]);
                     setFetchAgain(!fetchAgain)
                 }
@@ -213,7 +217,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                                 margin="auto"
                             />
                         ) : (
-                            <div className="messages">
+                                <div className="messages" ref={bottomRef}>
                                 <ScrollableChat messages={messages} />
                             </div>
                         )}
