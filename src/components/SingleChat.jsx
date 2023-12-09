@@ -114,7 +114,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     }, [selectedChat])
 
     useEffect(() => {
-        bottomRef.current.scrollTop = bottomRef.current.scrollHeight
+        if (bottomRef.current) {
+            bottomRef.current.scrollTop = bottomRef.current.scrollHeight;
+        }
     }, [messages]);
 
     useEffect(() => {

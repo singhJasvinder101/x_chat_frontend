@@ -120,7 +120,7 @@ const SideDrawer = () => {
 
     return (
         <div>
-            <div className="flex justify-between items-center bg-white p-3">
+            <div className="flex justify-between items-center bg-white">
                 <Tooltip
                     label="Search Users to chat"
                     hasArrow
