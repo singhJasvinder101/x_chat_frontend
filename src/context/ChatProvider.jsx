@@ -33,7 +33,8 @@ const ChatProvider = ({ children }) => {
             const token = await checkCookieToken();
             const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
-            if (!userInfo || !token) {
+            // if (!userInfo || !token) {  due to slow service of render
+            if (!userInfo) {
                 navigate('/');
             } else {
                 setUser(userInfo);

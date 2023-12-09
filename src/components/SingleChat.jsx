@@ -219,7 +219,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                                 margin="auto"
                             />
                         ) : (
-                                <div className="messages" ref={bottomRef}>
+                            <div className="messages" ref={bottomRef}>
                                 <ScrollableChat messages={messages} />
                             </div>
                         )}

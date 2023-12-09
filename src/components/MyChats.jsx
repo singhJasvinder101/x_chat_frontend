@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { chatState } from '../context/ChatProvider';
-import { Box, Button, Stack, Text, Tooltip, useToast } from '@chakra-ui/react';
+import { Box, Button, IconButton, Stack, Text, Tooltip, useToast } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import ChatLoading from './ChatLoading';
 import { getSender } from '../config/ChatLogics';
@@ -60,16 +60,16 @@ const MyChats = () => {
       >
         My Chats
         <Tooltip label="New Group Chat" placement="bottom-start" hasArrow>
-          <Button
-            ml={{ md: 4 }}
-            d="flex"
-            fontSize={{ base: "13px", md: "14px", lg: "14px" }}
-            rightIcon={<AddIcon fontSize="11px" />}
-          >
-            <GroupChatModel>
+          <GroupChatModel>
+            <Button
+              ml={{ md: 4 }}
+              d="flex"
+              fontSize={{ base: "13px", md: "14px", lg: "14px" }}
+              rightIcon={<AddIcon fontSize="11px" />}
+            >
               <span className='md:block xs:hidden'>New Group Chat</span>
-            </GroupChatModel>
-          </Button>
+            </Button>
+          </GroupChatModel>
         </Tooltip>
       </Box>
       <Box
