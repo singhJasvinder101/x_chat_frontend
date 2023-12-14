@@ -34,7 +34,7 @@ const ChatProvider = ({ children }) => {
             const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
             // if (!userInfo || !token) {  due to slow service of render
-            if (!userInfo) {
+            if (!token) {
                 navigate('/');
             } else {
                 setUser(userInfo);
