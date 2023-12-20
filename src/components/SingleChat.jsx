@@ -230,7 +230,11 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                             isRequired
                             mt={3}
                         >
-                            {isTyping && <span><Typing /></span>}
+                            
+                            {
+                                isTyping ? <span><Typing /></span>
+                                    : <div className='typing-empty'></div>
+                            }
                             <Input
                                 variant="filled"
                                 bg="#E0E0E0"

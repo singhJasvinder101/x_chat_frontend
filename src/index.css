@@ -68,6 +68,10 @@ code {
     width: 0px;
 }
 
+.typing-empty{
+    height: 38px !important;
+}
+
 ::-webkit-scrollbar-thumb {
     background: rgba(136, 136, 136, 0.281);
 }

@@ -10,7 +10,7 @@ const UserListItem = ({ user, accessChatFunction, handleFunction }) => {
             cursor={"pointer"}
             bg="#E8E8E8"
             _hover={{
-                background: "#38B2AC",
+                background: "#349beb",
                 color: "white",
             }}
             w="100%"
