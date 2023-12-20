@@ -26,6 +26,7 @@ const ChatProvider = ({ children }) => {
             }
         } catch (error) {
             console.log(error)
+            return undefined
         }
     }
     useEffect(() => {
@@ -33,11 +34,12 @@ const ChatProvider = ({ children }) => {
             const token = await checkCookieToken();
             const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
+            setUser(userInfo);
+
             // if (!userInfo || !token) {  due to slow service of render
-            if (!token) {
+            if (!userInfo || !token) {
                 navigate('/');
-            } else {
-                setUser(userInfo);
+            }else {
                 navigate('/chats')
             }
         };
