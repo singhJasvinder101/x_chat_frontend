@@ -30,11 +30,14 @@ const Home = () => {
                                 <p><Login navigate={navigate} /></p>
                             </TabPanel>
                             <TabPanel>
-                                <p><Signup /></p>
+                                <p><Signup /></p>   
                             </TabPanel>
                         </TabPanels>
                     </Tabs>
                 </Container>
+            </div>
+            <div className="warning">
+                It may take some time to load as the server is deployed on the free tier service
             </div>
         </div>
     )

@@ -20,7 +20,7 @@ const ProfileModal = ({ user, children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
-    <div>
+    <div className='profile'>
       {
         children ? (
           <span onClick={onOpen}>{children}</span>
@@ -32,6 +32,7 @@ const ProfileModal = ({ user, children }) => {
         <ModalOverlay />
         <ModalContent h="410px">
           <ModalHeader
+            id="modalheader"
             fontSize="40px"
             // fontFamily="Noto sans"
             className='martelSans text-gray-600'

@@ -23,9 +23,10 @@ code {
         monospace;
 }
 
+
 .App {
     background: url("/chat home page_ml_resize_x2.jpg");
-    height: 110vh;
+    height: 100dvh;
     width: 100% !important;
     background-position: center;
     background-repeat: no-repeat;
@@ -33,6 +34,31 @@ code {
     /* position: absolute; */
     top: 0;
     font-family: 'Belanosima';
+    position: relative;
+    overflow: hidden;
+        
+}
+#modalheader{
+    font-family: 'Belanosima' !important;
+    font-style: italic;
+}
+
+.chakra-text .css-0{
+    font-style: normal;
+}
+
+.chakra-modal__body{
+    font-style: italic;
+}
+
+.warning{
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    width: 300px;
+    padding: 1rem;
+    background-color: #D83838;
+    border-radius: 2rem;
 }
 
 .glass-effect {
