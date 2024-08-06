@@ -1,28 +1,27 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { chatState } from '../context/ChatProvider';
-import { Box, Button, IconButton, Stack, Text, Tooltip, useToast } from '@chakra-ui/react';
+import { Box, Button, Stack, Text, Tooltip, useToast } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import ChatLoading from './ChatLoading';
 import { getSender } from '../config/ChatLogics';
 import GroupChatModel from './GroupChatModel';
 
 const MyChats = () => {
-  const apiUrl = import.meta.env.VITE_API_URI
+  const apiUrl = import.meta.env.VITE_API_URI;
   const { selectedChat, fetchAgain, setSelectedChat, user, chats, setChats } = chatState();
-  const [loggedUser, setLoggedUser] = useState()
-  const toast = useToast()
+  const [loggedUser, setLoggedUser] = useState();
+  const toast = useToast();
 
   const fetchChats = async () => {
     try {
       const { data } = await axios.get(`${apiUrl}/api/chats`, {
-        withCredentials: true
-      })
+        withCredentials: true,
+      });
       setChats(data);
-
     } catch (error) {
       toast({
-        title: "Error Occured!",
+        title: "Error Occurred!",
         description: error.message,
         status: "error",
         duration: 5000,
@@ -30,13 +29,12 @@ const MyChats = () => {
         position: "bottom-left",
       });
     }
-  }
-
+  };
 
   useEffect(() => {
-    setLoggedUser(JSON.parse(localStorage.getItem("userInfo")))
-    fetchChats()
-  }, [fetchAgain])
+    setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
+    fetchChats();
+  }, [fetchAgain]);
 
   return (
     <Box
@@ -100,11 +98,10 @@ const MyChats = () => {
                     ? getSender(loggedUser, chat.users)
                     : chat.chatName}
                 </Text>
-                <Text fontSize={'sm'}>
-                  {/* {console.log(chat)} */}
+                <Text fontSize={'sm'} style={{ width: '100%', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                   {chat.latestMessage && (
                     <>
-                      <span>{chat?.latestMessage?.sender.name} : {chat?.latestMessage?.content}</span>
+                      <span>{chat.latestMessage.sender.name} : {chat.latestMessage.content}</span>
                     </>
                   )}
                 </Text>
@@ -116,7 +113,7 @@ const MyChats = () => {
         )}
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default MyChats
+export default MyChats;

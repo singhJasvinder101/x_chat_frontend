@@ -13,6 +13,7 @@ const ChatProvider = ({ children }) => {
     // fetch chats again when leaving group to update the list
     const [fetchAgain, setFetchAgain] = useState(false)
     const [notification, setNotification] = useState([])
+    const [status, setStatus] = useState(localStorage.getItem("isOnline"))
 
     const navigate = useNavigate()
 
@@ -50,7 +51,7 @@ const ChatProvider = ({ children }) => {
     return (
         <ChatContext.Provider value={{
             setUser, user, selectedChat, setSelectedChat, chats, setChats, 
-            setFetchAgain, fetchAgain, notification, setNotification
+            setFetchAgain, fetchAgain, notification, setNotification, status, setStatus
         }}>
             {children}
         </ChatContext.Provider>

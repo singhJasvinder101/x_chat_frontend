@@ -11,9 +11,12 @@ import io from 'socket.io-client'
 import Typing from '../animations/Typing'
 // import Lottie from "lottie-react";
 var socket, selectedChatCompare
+import { Offline, Online } from "react-detect-offline";
+import { GoDotFill } from "react-icons/go";
+import OnlineStatus from './OnlineStatus'
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
-    const { selectedChat, setSelectedChat, user, notification, setNotification } = chatState()
+    const { selectedChat, setSelectedChat, user, notification, status, setStatus, setNotification } = chatState()
 
     const [messages, setMessages] = useState([])
     const [loading, setLoading] = useState(false)
@@ -77,6 +80,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         }
     }
 
+    console.log(status)
     // initializing the socket at top
     useEffect(() => {
         if (!socket) {
@@ -88,6 +92,10 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 setIsTyping(true)
             })
             socket.on("stop typing", () => setIsTyping(false))
+            socket.emit("status", { room: selectedChat?._id, status })
+            socket.on("status", (status) => {
+                setStatus(status)
+            })
 
             socket.on('disconnect', () => {
                 console.log('Socket disconnected');
@@ -168,6 +176,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     }
 
 
+
     return (
         <>
             {selectedChat ? (
@@ -187,17 +196,26 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                                 onClick={() => setSelectedChat(false)}
                             />
                         </div>
-                        {!selectedChat.isGroupChat ? (
-                            <>
-                                {getSender(user, selectedChat.users)}
-                                <ProfileModal user={getSenderFull(user, selectedChat.users)} />
-                            </>
-                        ) : (
-                            <>
-                                {selectedChat.chatName.toUpperCase()}
-                                <UpdateGroupChatModel fetchMessages={fetchMessages} />
-                            </>
-                        )}
+
+                        <div className="flex w-full" >
+                            {!selectedChat.isGroupChat ? (
+                                <div className="flex w-full justify-between" >
+                                    <span className="flex items-center gap-1" >
+                                        {getSender(user, selectedChat.users)}
+                                        <OnlineStatus />
+                                    </span>
+                                    <ProfileModal user={getSenderFull(user, selectedChat.users)} />
+                                </div>
+                            ) : (
+                                <div className="flex w-full justify-between" >
+                                    <span className="flex items-center gap-1" >
+                                        {selectedChat.chatName.toUpperCase()}
+                                        <OnlineStatus />
+                                    </span>
+                                    <UpdateGroupChatModel fetchMessages={fetchMessages} />
+                                </div>
+                            )}
+                        </div>
                     </Text>
                     <Box
                         className='d-flex'
@@ -220,7 +238,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                             />
                         ) : (
                             <div className="messages" ref={bottomRef}>
-                                <ScrollableChat messages={messages} />
+                                <ScrollableChat messages={messages} setMessages={setMessages} setFetchAgain={setFetchAgain} />
                             </div>
                         )}
 
@@ -230,7 +248,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                             isRequired
                             mt={3}
                         >
-                            
+
                             {
                                 isTyping ? <span><Typing /></span>
                                     : <div className='typing-empty'></div>
